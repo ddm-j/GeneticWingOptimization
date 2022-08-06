@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rm -rf 0.*
+find -type d -name '*e-0*' -exec rm -r {} +
+

@@ -1,0 +1,7 @@
+#!/bin/bash
+source /opt/openfoam5/etc/bashrc
+source ~/.bashrc
+
+reconstructPar -latestTime
+./rmProcessors
+

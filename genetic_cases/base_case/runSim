@@ -1,0 +1,10 @@
+#!/bin/bash
+source /opt/openfoam5/etc/bashrc
+source ~/.bashrc
+
+./rmPost
+./rmProcessors
+cp -rf 0org/* 0/
+/opt/openfoam5/platforms/linux64GccDPInt32Opt/bin/decomposePar
+mpirun -np 6 simpleFoam -parallel
+

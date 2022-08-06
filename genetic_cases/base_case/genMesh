@@ -1,0 +1,25 @@
+#!/bin/bash
+source /opt/openfoam5/etc/bashrc
+source ~/.bashrc
+
+#Delete Old Data
+
+./rmProcessors
+
+rm constant/polyMesh/*
+rm constant/triSurface/*.eMesh
+rm constant/extendedFeatureEdgeMesh/*
+
+#Delete Files in 0 folder
+
+rm 0/*
+
+#Generate New Mesh
+
+blockMesh
+surfaceFeatureExtract
+decomposePar
+mpirun -np 6 snappyHexMesh -parallel -overwrite
+reconstructParMesh -constant
+./rmProcessors
+
